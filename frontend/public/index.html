@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valetia - Assistant Juridique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background: #eee;
+      margin-right: 5px;
+      border-radius: 5px 5px 0 0;
+    }
+    .tab.active {
+      background: #4CAF50;
+      color: white;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Valetia</h1>
+    <div class="tabs">
+      <div class="tab active" onclick="openTab('copropriete')">Copropriété</div>
+      <div class="tab" onclick="openTab('prudhommes')">Prud'hommes</div>
+    </div>
+    
+    <div id="copropriete" class="tab-content active">
+      <h2>Analyse de dossier Copropriété</h2>
+      <form id="form-copropriete">
+        <label for="title">Titre du dossier:</label>
+        <input type="text" id="title" name="title" required>
+        
+        <label for="summary">Description du problème:</label>
+        <textarea id="summary" name="summary" rows="4" required></textarea>
+        
+        <h3>Points clés</h3>
+        <div id="keypoints-copropriete">
+          <input type="text" name="keypoint" placeholder="Point clé 1">
+        </div>
+        <button type="button" onclick="addKeyPoint('copropriete')">+ Ajouter un point</button>
+        
+        <button type="button" onclick="generateReport('copropriete')">Générer le rapport</button>
+      </form>
+      
+      <div id="results-copropriete" style="margin-top: 20px;"></div>
+    </div>
+    
+    <div id="prudhommes" class="tab-content">
+      <h2>Analyse de dossier Prud'hommes</h2>
+      <form id="form-prudhommes">
+        <label for="title-prudhommes">Titre du dossier:</label>
+        <input type="text" id="title-prudhommes" name="title" required>
+        
+        <label for="summary-prudhommes">Description du problème:</label>
+        <textarea id="summary-prudhommes" name="summary" rows="4" required></textarea>
+        
+        <h3>Points clés</h3>
+        <div id="keypoints-prudhommes">
+          <input type="text" name="keypoint" placeholder="Point clé 1">
+        </div>
+        <button type="button" onclick="addKeyPoint('prudhommes')">+ Ajouter un point</button>
+        
+        <button type="button" onclick="generateReport('prudhommes')">Générer le rapport</button>
+      </form>
+      
+      <div id="results-prudhommes" style="margin-top: 20px;"></div>
+    </div>
+  </div>
+
+  <!-- Analyse IA -->
+  <div style="margin: 20px auto; max-width: 800px; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h2 style="color: #2c3e50; text-align: center;">Analyse IA de Documents</h2>
+    
+    <div>
+      <input type="file" id="ai-document" style="margin-bottom: 10px;">
+      <button onclick="analyzeDocument()" style="width: 100%; padding: 10px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Analyser avec IA</button>
+    </div>
+    
+    <div id="analysis-results" style="margin-top: 20px;"></div>
+  </div>
+
+  <!-- Interface de conversation IA -->
+  <div style="margin: 20px auto; max-width: 800px; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h2 style="color: #2c3e50; text-align: center;">Conversation avec l'IA juridique</h2>
+    
+    <div id="chat-messages" style="height: 300px; border: 1px solid #ddd; border-radius: 4px; padding: 10px; margin-bottom: 10px; overflow-y: auto;">
+      <div style="padding: 8px 12px; background-color: #f1f1f1; border-radius: 15px; display: inline-block; margin-bottom: 10px;">
+        Bonjour, je suis Valetia, votre assistant juridique. Comment puis-je vous aider?
+      </div>
+    </div>
+    
+    <div style="display: flex;">
+      <input type="text" id="user-message" style="flex-grow: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin-right: 10px;" placeholder="Écrivez votre message...">
+      <button onclick="sendMessage()" style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Envoyer</button>
+    </div>
+  </div>
+
+  <script>
+    function openTab(tabName) {
+      const tabs = document.getElementsByClassName('tab');
+      const contents = document.getElementsByClassName('tab-content');
+      
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+      }
+      
+      for (let i = 0; i < contents.length; i++) {
+        contents[i].classList.remove('active');
+      }
+      
+      document.getElementById(tabName).classList.add('active');
+      document.querySelector(`.tab[onclick="openTab('${tabName}')"]`).classList.add('active');
+    }
+    
+    function addKeyPoint(type) {
+      const container = document.getElementById(`keypoints-${type}`);
+      const inputs = container.getElementsByTagName('input');
+      const newInput = document.createElement('input');
+      
+      newInput.type = 'text';
+      newInput.name = 'keypoint';
+      newInput.placeholder = `Point clé ${inputs.length + 1}`;
+      
+      container.appendChild(newInput);
+    }
+    
+    function generateReport(type) {
+      const form = document.getElementById(`form-${type}`);
+      const title = form.title.value;
+      const summary = form.summary.value;
+      const keypointInputs = form.querySelectorAll('input[name="keypoint"]');
+      
+      if (!title || !summary) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+      
+      const keyPoints = [];
+      keypointInputs.forEach(input => {
+        if (input.value.trim() !== '') {
+          keyPoints.push(input.value);
+        }
+      });
+      
+      const data = {
+        title,
+        summary,
+        keyPoints
+      };
+      
+      fetch('/api/rapports/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          const resultsDiv = document.getElementById(`results-${type}`);
+          resultsDiv.innerHTML = `
+            <div style="padding: 15px; background-color: #dff0d8; border-radius: 4px;">
+              <h3>Rapport généré avec succès!</h3>
+              <p>Votre rapport a été créé.</p>
+              <p><a href="/download/${result.filename}" target="_blank">Télécharger le rapport PDF</a></p>
+            </div>
+          `;
+        } else {
+          alert(`Erreur: ${result.message}`);
+        }
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+        alert('Une erreur est survenue lors de la génération du rapport.');
+      });
+    }
+
+    function analyzeDocument() {
+      const fileInput = document.getElementById('ai-document');
+      if (!fileInput.files || fileInput.files.length === 0) {
+        alert('Veuillez sélectionner un document');
+        return;
+      }
+      
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append('document', file);
+      
+      // Afficher message de chargement
+      document.getElementById('analysis-results').innerHTML = `
+        <div style="padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
+          <p>Analyse en cours...</p>
+        </div>
+      `;
+      
+      fetch('/api/documents/analyze', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          const analysis = data.analysis;
+          
+          let keyPointsHtml = '';
+          if (analysis.keyPoints && analysis.keyPoints.length > 0) {
+            keyPointsHtml = `
+              <h4>Points clés:</h4>
+              <ul>
+                ${analysis.keyPoints.map(point => `<li>${point}</li>`).join('')}
+              </ul>
+            `;
+          }
+          
+          document.getElementById('analysis-results').innerHTML = `
+            <div style="padding: 15px; background-color: #dff0d8; border-radius: 4px;">
+              <h3>Résultats de l'analyse</h3>
+              <p><strong>Catégorie:</strong> ${analysis.category}</p>
+              
+              <h4>Dates identifiées:</h4>
+              <ul>
+                ${analysis.dates.map(date => `<li>${date}</li>`).join('')}
+              </ul>
+              
+              <h4>Montants identifiés:</h4>
+              <ul>
+                ${analysis.amounts.map(amount => `<li>${amount}</li>`).join('')}
+              </ul>
+              
+              ${keyPointsHtml}
+            </div>
+          `;
+        } else {
+          document.getElementById('analysis-results').innerHTML = `
+            <div style="padding: 15px; background-color: #f2dede; border-radius: 4px;">
+              <h3>Erreur</h3>
+              <p>${data.message}</p>
+            </div>
+          `;
+        }
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+        document.getElementById('analysis-results').innerHTML = `
+          <div style="padding: 15px; background-color: #f2dede; border-radius: 4px;">
+            <h3>Erreur</h3>
+            <p>Une erreur est survenue lors de l'analyse.</p>
+          </div>
+        `;
+      });
+    }
+
+    function sendMessage() {
+      const messageInput = document.getElementById('user-message');
+      const message = messageInput.value.trim();
+      
+      if (!message) return;
+      
+      // Afficher le message utilisateur
+      const chatMessages = document.getElementById('chat-messages');
+      chatMessages.innerHTML += `
+        <div style="padding: 8px 12px; background-color: #dcf8c6; border-radius: 15px; display: inline-block; margin-bottom: 10px; float: right; clear: both;">
+          ${message}
+        </div>
+        <div style="clear: both;"></div>
+      `;
+      
+      // Vider l'input
+      messageInput.value = '';
+      
+      // Faire défiler vers le bas
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      
+      // Envoyer au serveur
+      fetch('/api/conversation/message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Afficher la réponse
+          chatMessages.innerHTML += `
+            <div style="padding: 8px 12px; background-color: #f1f1f1; border-radius: 15px; display: inline-block; margin-bottom: 10px; clear: both;">
+              ${data.response.message}
+            </div>
+            <div style="clear: both;"></div>
+          `;
+          
+          // Faire défiler vers le bas
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        } else {
+          console.error('Erreur:', data.message);
+          chatMessages.innerHTML += `
+            <div style="padding: 8px 12px; background-color: #f2dede; border-radius: 15px; display: inline-block; margin-bottom: 10px; clear: both;">
+              Une erreur est survenue. Veuillez réessayer.
+            </div>
+            <div style="clear: both;"></div>
+          `;
+        }
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+        chatMessages.innerHTML += `
+          <div style="padding: 8px 12px; background-color: #f2dede; border-radius: 15px; display: inline-block; margin-bottom: 10px; clear: both;">
+            Une erreur est survenue. Veuillez réessayer.
+          </div>
+          <div style="clear: both;"></div>
+        `;
+      });
+    }
+    
+    // Permettre l'envoi avec Enter
+    document.getElementById('user-message').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  </script>
+  
+  <!-- Fonctionnalité de capture d'écran -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    function captureScreen() {
+      html2canvas(document.querySelector('.container')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'valetia-capture.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+  </script>
+  <button onclick="captureScreen()" style="margin: 20px auto; display: block; background-color: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Capturer l'écran</button>
+</body>
+</html>

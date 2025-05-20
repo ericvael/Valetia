@@ -9,6 +9,22 @@ Analyse de documents: pdf-parse, docx-parser, natural
 Génération de PDF: pdfkit
 Capture d'écran: html2canvas
 
+## Directives de contribution
+
+Pour contribuer à ce projet, veuillez suivre ces directives:
+
+1. Fournir des instructions étape par étape complètes
+2. Inclure les commandes exactes à exécuter (`nano`, `mkdir`, etc.)
+3. **TOUJOURS fournir le code complet des fichiers, jamais des extraits ou des fragments de code**
+4. Ne jamais supposer de connaissances préalables sur l'organisation des fichiers
+5. Préférer la répétition du code complet plutôt que des instructions partielles
+## Exigences pour le développement
+
+- **Code complet uniquement** - Toujours fournir le code entier des fichiers, jamais des extraits
+- Les contributeurs doivent toujours inclure les commandes shell complètes (nano, mkdir, etc.)
+- Préférer la répétition du code complet plutôt que des références à des modifications partielles
+
+Ces directives sont obligatoires et aident à maintenir un processus de développement clair et sans erreur.
 Structure du projet
 valetia/
 │
@@ -69,13 +85,3 @@ Accessibilité
 Valetia est conçu avec une attention particulière à l'accessibilité, notamment pour les utilisateurs malentendants, avec des contrastes élevés et des notifications visuelles.
 Licence
 Tous droits réservés © 2025 Eric Vael
-## Directives de contribution
-
-Pour contribuer à ce projet, veuillez suivre ces directives:
-
-1. Fournir des instructions étape par étape complètes
-2. Inclure les commandes exactes à exécuter (`nano`, `mkdir`, etc.)
-3. Donner le code complet à copier-coller, pas des extraits partiels
-4. Ne jamais supposer de connaissances préalables sur l'organisation des fichiers
-
-Ces directives aident à maintenir un processus de développement clair et sans erreur.

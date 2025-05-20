@@ -1,22 +1,20 @@
 {
-  "name": "valetia-screencapture",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
+  "name": "valetia",
+  "version": "1.0.0",
+  "description": "Assistant juridique IA local",
+  "main": "backend/src/app.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "node backend/src/app.js"
   },
   "dependencies": {
-    "html2canvas": "^1.4.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "express": "^4.18.2",
+    "pdfkit": "^0.14.0",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1",
+    "natural": "^6.5.0",
+    "html2canvas": "^1.4.1"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.21",
-    "tailwindcss": "^4.1.7",
-    "vite": "^5.0.8"
-  }
+  "author": "Eric Vael",
+  "license": "MIT"
 }
