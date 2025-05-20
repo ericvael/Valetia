@@ -1,0 +1,7 @@
+streamlit
+spacy
+loguru
+pandas
+pypdf2
+python-docx
+openpyxl

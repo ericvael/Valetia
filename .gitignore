@@ -1,0 +1,20 @@
+# Fichiers sensibles ou inutiles
+*.key
+*.conf
+*.log
+*.sqlite
+*.db
+*.tar.gz
+*.bak
+*.dat
+.env
+__pycache__/
+*.pyc
+venv/
+.DS_Store
+node_modules/
+.env
+*.log
+__pycache__/
+*.pyc
+*.egg-info/

@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "check_interval_hours": 24,
+  "last_check": "2025-05-18T18:52:24.095097",
+  "notify_on_updates": true,
+  "notify_on_vulnerabilities": true,
+  "min_severity": "medium",
+  "notification_methods": [
+    "log"
+  ]
+}

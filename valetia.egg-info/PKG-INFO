@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: valetia
+Version: 0.1.0
+Requires-Dist: streamlit
+Requires-Dist: spacy
+Requires-Dist: loguru
+Requires-Dist: pandas
+Requires-Dist: pypdf2
+Requires-Dist: python-docx
+Requires-Dist: openpyxl
+Dynamic: requires-dist

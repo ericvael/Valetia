@@ -1,0 +1,43 @@
+# Frameworks et base
+fastapi
+uvicorn
+pydantic
+
+# Traitement de données
+pandas
+numpy
+
+# Traitement du langage naturel
+spacy
+nltk
+
+# Gestion des fichiers
+python-multipart
+pypdf2
+python-docx
+openpyxl
+
+# Interface utilisateur
+streamlit
+
+# Base de données vectorielle
+chromadb
+
+# Logging et monitoring
+loguru
+
+# Tests
+pytest
+pytest-cov
+
+# Outils de développement
+black
+isort
+flake8
+
+# IA et optimisation
+torch
+transformers
+onnx
+onnxruntimestructlog>=22.3.0
+python-json-logger>=2.0.7

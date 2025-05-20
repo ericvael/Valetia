@@ -1,0 +1,158 @@
+[
+  {
+    "timestamp": "2025-05-18T18:52:24.095414",
+    "type": "updates",
+    "details": [
+      {
+        "name": "click",
+        "current_version": "8.1.8",
+        "latest_version": "8.2.0"
+      },
+      {
+        "name": "fastapi",
+        "current_version": "0.115.9",
+        "latest_version": "0.115.12"
+      },
+      {
+        "name": "importlib-metadata",
+        "current_version": "8.6.1",
+        "latest_version": "8.7.0"
+      },
+      {
+        "name": "nvidia-cublas-cu12",
+        "current_version": "12.6.4.1",
+        "latest_version": "12.9.0.13"
+      },
+      {
+        "name": "nvidia-cuda-cupti-cu12",
+        "current_version": "12.6.80",
+        "latest_version": "12.9.19"
+      },
+      {
+        "name": "nvidia-cuda-nvrtc-cu12",
+        "current_version": "12.6.77",
+        "latest_version": "12.9.41"
+      },
+      {
+        "name": "nvidia-cuda-runtime-cu12",
+        "current_version": "12.6.77",
+        "latest_version": "12.9.37"
+      },
+      {
+        "name": "nvidia-cudnn-cu12",
+        "current_version": "9.5.1.17",
+        "latest_version": "9.10.1.4"
+      },
+      {
+        "name": "nvidia-cufft-cu12",
+        "current_version": "11.3.0.4",
+        "latest_version": "11.4.0.6"
+      },
+      {
+        "name": "nvidia-cufile-cu12",
+        "current_version": "1.11.1.6",
+        "latest_version": "1.14.0.30"
+      },
+      {
+        "name": "nvidia-curand-cu12",
+        "current_version": "10.3.7.77",
+        "latest_version": "10.3.10.19"
+      },
+      {
+        "name": "nvidia-cusolver-cu12",
+        "current_version": "11.7.1.2",
+        "latest_version": "11.7.4.40"
+      },
+      {
+        "name": "nvidia-cusparse-cu12",
+        "current_version": "12.5.4.2",
+        "latest_version": "12.5.9.5"
+      },
+      {
+        "name": "nvidia-cusparselt-cu12",
+        "current_version": "0.6.3",
+        "latest_version": "0.7.1"
+      },
+      {
+        "name": "nvidia-nccl-cu12",
+        "current_version": "2.26.2",
+        "latest_version": "2.26.5"
+      },
+      {
+        "name": "nvidia-nvjitlink-cu12",
+        "current_version": "12.6.85",
+        "latest_version": "12.9.41"
+      },
+      {
+        "name": "nvidia-nvtx-cu12",
+        "current_version": "12.6.77",
+        "latest_version": "12.9.19"
+      },
+      {
+        "name": "packaging",
+        "current_version": "24.2",
+        "latest_version": "25.0"
+      },
+      {
+        "name": "pip",
+        "current_version": "24.0",
+        "latest_version": "25.1.1"
+      },
+      {
+        "name": "protobuf",
+        "current_version": "5.29.4",
+        "latest_version": "6.31.0"
+      },
+      {
+        "name": "pydantic-core",
+        "current_version": "2.33.2",
+        "latest_version": "2.34.1"
+      },
+      {
+        "name": "starlette",
+        "current_version": "0.45.3",
+        "latest_version": "0.46.2"
+      },
+      {
+        "name": "thinc",
+        "current_version": "8.3.6",
+        "latest_version": "9.1.1"
+      },
+      {
+        "name": "inflect",
+        "current_version": "7.3.1",
+        "latest_version": "7.5.0"
+      },
+      {
+        "name": "jaraco.context",
+        "current_version": "5.3.0",
+        "latest_version": "6.0.1"
+      },
+      {
+        "name": "jaraco.functools",
+        "current_version": "4.0.1",
+        "latest_version": "4.1.0"
+      },
+      {
+        "name": "jaraco.text",
+        "current_version": "3.12.1",
+        "latest_version": "4.0.0"
+      },
+      {
+        "name": "more-itertools",
+        "current_version": "10.3.0",
+        "latest_version": "10.7.0"
+      },
+      {
+        "name": "tomli",
+        "current_version": "2.0.1",
+        "latest_version": "2.2.1"
+      },
+      {
+        "name": "typeguard",
+        "current_version": "4.3.0",
+        "latest_version": "4.4.2"
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-area {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 20px;
+  background-color: white;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.test-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.test-card h3 {
+  margin-top: 0;
+  color: #495057;
+}
+
+.test-card ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.test-card li {
+  margin-bottom: 8px;
+}

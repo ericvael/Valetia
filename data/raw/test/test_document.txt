@@ -1,0 +1,13 @@
+
+        Ceci est un document de test pour Valetia.
+        
+        Dans ce document, nous allons tester l'analyse de texte juridique.
+        
+        Les parties concernées sont Jean Dupont et Marie Martin, associés de la SCI Horizon.
+        
+        La date du contrat est le 15 avril 2024.
+        
+        Le montant du loyer est de 1200 euros par mois.
+        
+        Le contrat prend fin le 31 décembre 2025.
+        
